@@ -1,0 +1,71 @@
+lavra assembly report
+---------------------------------------------------------------------------
+date/time                    : 10.03.2015 18:21
+source                       : D:\Blink_Brett\Code_Brett_1_LunaAVR.luna
+compiler                     : lavrc 2014.r2.4
+assembler                    : lavra 1.3
+---------------------------------------------------------------------------
+processor                    : atmega8
+sram (hardware complete)     : 1120 bytes
+sram (reserved by controller): 96 bytes
+sram (user space)            : 1024 bytes
+sram (reserved by vars)      : 2 bytes
+sram (reserved by stack)     : 64 bytes
+sram (unused/dynamic)        : 958 bytes
+eeprom                       : 512 bytes
+flash                        : 8192 bytes
+---------------------------------------------------------------------------
+flash (code start offset)    : 38 bytes
+flash (used)                 : 210 bytes (2.56%)
+sram (static used)           : 66 bytes (vars + stack)
+eeprom (used)                : 0 bytes
+intVectorSize                : 38 bytes
+stack size                   : 64 bytes
+
+sram start                   : 0x60
+sram dynamic start           : 0x62
+sram dynamic end             : 0x41F
+eeprom start                 : 0x0
+
+hw multiply                  : yes
+hw jmp/call                  : no
+address wrap                 : yes
+
+---------------------------------------------------------------------------
+ optimizations
+---------------------------------------------------------------------------
+branches (brxx)              : done
+calls                        : done
+jumps                        : done
+length                       : done
+memory usage                 : done
+
+---------------------------------------------------------------------------
+ SRAM
+ hex        dec       type      label
+---------------------------------------------------------------------------
+ 0x0062     98        internal  _MALLOC
+
+---------------------------------------------------------------------------
+ FLASH (addresses in words)
+ hex        dec       type      label
+---------------------------------------------------------------------------
+ 0x000013   19        internal  _LUNA_MAIN
+ 0x000031   49        internal  _do0
+ 0x000050   80        internal  _do0until
+ 0x000051   81        internal  _do0break
+ 0x000051   81        internal  _Waitms
+ 0x000054   84        internal  __waitmsZ
+ 0x000054   84        internal  _WMS_LOOP
+ 0x000056   86        internal  _DELAY_LoopB1
+ 0x00005A   90        internal  _WMS_EXIT
+ 0x00005B   91        internal  _SRAM_CLEAR
+ 0x000062   98        internal  _SRAM_CLEAR_LOOP
+ 0x000069   105       internal  _data
+
+---------------------------------------------------------------------------
+ EEPROM
+ hex        dec       type      label
+---------------------------------------------------------------------------
+ 0x0000     0         user      eeprom
+---------------------------------------------------------------------------

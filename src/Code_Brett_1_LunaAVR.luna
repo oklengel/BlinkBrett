@@ -1,0 +1,67 @@
+'**************************************************************************
+'* Name        : BlinkBrett, Avionik; 6/10 Fassberg
+'* Date		   : 2015
+'**************************************************************************
+
+
+
+
+
+avr.device = atmega8  	'Controller-Typ festlegen, dieser Befehl zeigt dir auch die Übersicht rechts an. Der Name steht auf den Chip
+avr.clock = 16000000	'Dem Compiler mitteilen mit welcher Taktrate der Controller läuft = 16MHZ
+avr.stack = 64			'Den Programmstack einstellen =>so lassen
+' -> Siehe "avr": http://avr.myluna.de/doku.php?id=de:avr 4,5 1. takt
+
+'Als nächstes definieren wir Variablen und weisen diese gleich Anschlüßen zu. Generell kannst du jeden Anschluss außer Aref verwenden 
+'der in den Übersicht weiß dargestellt ist. 
+#define HrotL as PortC.6 	'1
+#define HweisL as PortD.0	'2
+#define Flight as PortD.1	'3
+#define HweisR as PortD.2	'4
+#define Blink1 as PortD.3  	'5
+#define Blink2 as PortD.4 	'6
+'7 VCC
+'8 GND
+#define HrotR as PortB.6 	'9
+#define Blinkb1 as PortB.7 	'10
+#define Blinkb2 as PortD.5	'11
+#define Blinkc1 as PortD.6 	'12
+#define Blinkc2 as PortD.7 	'13
+#define  reserve as PortB.0	'14
+
+' -> Siehe "#defines": http://avr.myluna.de/doku.php?id=de:define
+
+'Da man die Ports entweder als Eingang oder Ausgangnutzen kann, aber niemals gleichzeitig, müssen wir Ausgänge als Ausgang schalten.
+'Da können wir gleich Dauerlichter einschalten.
+HrotL.mode = output,low
+HweisL.mode = output,high
+HrotR.mode = output,high
+HweisR.mode = output,high ' 1 bis 4 Dauerlicht
+Flight.mode = output, high 'die Rampe auch an
+
+'Als nächstes bekommen die Blinklichter auch noch einen definierten Zustand
+Blink1.mode    = output, high 	'5
+Blink2.mode    = output,low		'6
+Blinkb1.mode   = output,low 	'10
+Blinkb2.mode   = output,high	'11
+Blinkc1.mode   = output,low 	'12
+Blinkc2.mode   = output,high 	'13
+reserve.mode   = output,low		'14
+' -> Siehe "Port": http://avr.myluna.de/doku.php?id=de:port
+
+
+
+do 'Hauptschleife (wird nicht verlassen)
+  
+  
+  waitms 100'500 ms warten, -> Siehe "wait": http://avr.myluna.de/doku.php?id=de:wait
+  'Jetzt müssen wir nur noch die Blinklichter ändern, das heißt 0=>1 ; 1=>0
+  Blink1.toggle	'5
+  Blink2.toggle	'6
+  Blinkb1.toggle	'10
+  Blinkb2.toggle   '11
+  Blinkc1.toggle	'12
+  Blinkc2.toggle	'13
+  reserve.toggle	'14
+  
+loop 'ende der Hauptschleife
